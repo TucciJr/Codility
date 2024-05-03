@@ -8,6 +8,7 @@ internal class Lesson02_CyclicRotation
         Console.WriteLine("-----------------------");
 
         Run([3, 8, 9, 7, 6], 3);
+        Run([], 1);
 
         Console.WriteLine("--- * ---");
     }
@@ -21,30 +22,41 @@ internal class Lesson02_CyclicRotation
 
     public int[] solution(int[] A, int K)
     {
-        int[] rotate = new int[A.Length];
+        var count = A.Length;
+
+        if (count < 2 || count == K)
+        {
+            return A;
+        }
 
         for (int k = 0; k < K; k++)
         {
-            rotate[0] = A[A.Length - 1];
+            var last = A[count - 1];
 
-            for (int i = 0; i < A.Length - 1; i++)
+            for (int i = count - 1; i > 0; i--)
             {
-                rotate[i + 1] = A[i];
+                A[i] = A[i - 1];
             }
+            A[0] = last;
             
             //Console.WriteLine($"[{k}] {string.Join(",", A)}");
-
-            A = rotate.Clone() as int[];
         }
 
-        return rotate;
+        return A;
     }
 }
 
 /*
 [3, 8, 9, 7, 6]
 
+length = 5
 last = 6
+
+4 - 7
+3 - 9
+2 - 8
+1 - 3
+0 - 6
 
 0 = 6
 1 = 3
