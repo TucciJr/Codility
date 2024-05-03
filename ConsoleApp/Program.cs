@@ -8,3 +8,5 @@ var binaryGap = new Lesson01_BinaryGap();
 var oddOccurrencesInArray = new Lesson02_OddOccurrencesInArray();
 
 var cyclicRotation = new Lesson02_CyclicRotation();
+
+var frogImp = new Lesson03_FrogImp();
