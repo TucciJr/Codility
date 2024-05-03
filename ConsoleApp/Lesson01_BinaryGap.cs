@@ -29,8 +29,6 @@
             var sequence = 0;
             var binaryN = Convert.ToString(N, 2);
 
-            var index = 0;
-
             foreach (var item in binaryN)
             {
                 if (item == '1')
@@ -43,8 +41,6 @@
                 {
                     sequence++;
                 }
-
-                //Console.WriteLine($"{index++} - {item} - {sequence} - {max}");
             }
 
             return max;
