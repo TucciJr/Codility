@@ -2,11 +2,25 @@
 {
     internal class Lesson01_BinaryGap
     {
-        public Lesson01_BinaryGap(int N)
+        public Lesson01_BinaryGap()
+        {
+            Console.WriteLine("Lesson01_BinaryGap");
+            Console.WriteLine("------------------");
+
+            Run(9);
+            Run(529);
+            Run(20);
+            Run(15);
+            Run(32);
+
+            Console.WriteLine("--- * ---");
+        }
+
+        private void Run(int N)
         {
             int longest = solution(N);
 
-            Console.WriteLine(longest);
+            Console.WriteLine($"Longest gap: {longest} for {N} ({Convert.ToString(N, 2)})");
         }
 
         private int solution(int N)
@@ -19,14 +33,9 @@
 
             foreach (var item in binaryN)
             {
-                var isOne = item == '1';
-
-                if (isOne)
+                if (item == '1')
                 {
-                    if (sequence > max)
-                    {
-                        max = sequence;
-                    }
+                    max = Math.Max(sequence, max);
 
                     sequence = 0;
                 }
@@ -35,7 +44,7 @@
                     sequence++;
                 }
 
-                Console.WriteLine($"{index++} - {item} - {sequence} - {max}");
+                //Console.WriteLine($"{index++} - {item} - {sequence} - {max}");
             }
 
             return max;
