@@ -22,46 +22,35 @@ internal class Lesson02_CyclicRotation
 
     public int[] solution(int[] A, int K)
     {
-        var count = A.Length;
+        int length = A.Length;
+        int[] rotatedArray = new int[length];
 
-        if (count < 2 || count == K)
+        if (length == 0 || K == 0)
         {
             return A;
         }
 
-        for (int k = 0; k < K; k++)
-        {
-            var last = A[count - 1];
+        int effectiveRotations = K % length;
 
-            for (int i = count - 1; i > 0; i--)
-            {
-                A[i] = A[i - 1];
-            }
-            A[0] = last;
-            
-            //Console.WriteLine($"[{k}] {string.Join(",", A)}");
+        for (int i = 0; i < length; i++)
+        {
+            var position = (i + effectiveRotations) % length;
+
+            rotatedArray[position] = A[i];
+
+            //Console.WriteLine($"{i} - {position} - {A[i]}");
         }
 
-        return A;
+        return rotatedArray;
     }
 }
 
 /*
 [3, 8, 9, 7, 6]
 
-length = 5
-last = 6
-
-4 - 7
-3 - 9
-2 - 8
-1 - 3
-0 - 6
-
-0 = 6
-1 = 3
-2 = 8
-3 = 9
-4 = 7
-5 = 6
+0 - 3 - 3
+1 - 4 - 8
+2 - 0 - 9
+3 - 1 - 7
+4 - 2 - 6
 */
