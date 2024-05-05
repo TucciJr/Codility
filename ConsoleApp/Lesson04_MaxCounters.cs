@@ -15,33 +15,35 @@ internal class Lesson04_MaxCounters
     {
         var counters = solution(N, A);
 
-        Console.WriteLine($"Counters: {string.Join(",", counters)} for ({string.Join(",", A)})]");
+        Console.WriteLine($"Counters: {string.Join(",", counters)} for ({string.Join(",", A)}), {N} times");
     }
 
     public int[] solution(int N, int[] A)
     {
-        var counters = new int[N];
         var max = 0;
+        var lastMax = 0;
+        var counters = new int[N];
 
         for (int i = 0; i < A.Length; i++)
         {
-            var x = A[i];
+            var index = A[i] - 1;
 
-            if (x > N)
+            if (index == N)
             {
-                for (int n = 0; n < N; n++)
-                {
-                    counters[n] = max;
-                }
+                lastMax = max;
             }
             else
             {
-                counters[A[i] - 1]++;
+                counters[index] = Math.Max(lastMax, counters[index]);
+                counters[index]++;
 
-                max = Math.Max(max, counters[A[i] - 1]);
+                max = Math.Max(max, counters[index]);
             }
-            
-            //Console.WriteLine($"Counters: ({string.Join(",", counters)})");
+        }
+
+        for (int i = 0; i < N; i++)
+        {
+            counters[i] = Math.Max(lastMax, counters[i]);
         }
 
         return counters;
