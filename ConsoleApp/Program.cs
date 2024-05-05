@@ -10,3 +10,5 @@ var oddOccurrencesInArray = new Lesson02_OddOccurrencesInArray();
 var cyclicRotation = new Lesson02_CyclicRotation();
 
 var frogImp = new Lesson03_FrogImp();
+
+var maxCounters = new Lesson04_MaxCounters();

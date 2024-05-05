@@ -4,7 +4,7 @@ internal class Lesson03_FrogImp
     public Lesson03_FrogImp()
     {
         Console.WriteLine("Lesson03_FrogImp");
-        Console.WriteLine("-----------------------");
+        Console.WriteLine("----------------");
 
         Run(1, 7, 3);
         Run(10, 85, 30);
