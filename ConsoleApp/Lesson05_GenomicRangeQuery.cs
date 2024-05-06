@@ -5,10 +5,11 @@ internal class Lesson05_GenomicRangeQuery
 {
     public Lesson05_GenomicRangeQuery()
     {
-        Console.WriteLine("Lesson04_MaxCounters");
-        Console.WriteLine("--------------------");
+        Console.WriteLine("Lesson05_GenomicRangeQuery");
+        Console.WriteLine("--------------------------");
 
-        Run("CAGGCTA", [2, 5, 0], [4, 5, 6]);
+        Run("A", [0], [0]);
+        Run("CAGCCTA", [2, 5, 0], [4, 5, 6]);
 
         Console.WriteLine("--- * ---");
     }
@@ -27,39 +28,29 @@ internal class Lesson05_GenomicRangeQuery
 
         for (int i = 0; i < M; i++)
         {
-            var min = 4;
-            for (int j = P[i]; j <= Q[i]; j++)
-            {
-                min = Math.Min(min, ImpactFactor(S[j]));
-            }
-
-            queries[i] = min;
+            queries[i] = ImpactFactor(S.Substring(P[i], Q[i] - P[i] + 1));
         }
 
         return queries;
     }
 
-    private int ImpactFactor(char letter)
+    private int ImpactFactor(string sequence)
     {
-        var impactFactor = 0;
-        switch (letter)
+        if (sequence.Contains('A'))
         {
-            case 'A':
-                impactFactor = 1;
-                break;
-            case 'C':
-                impactFactor = 2;
-                break;
-            case 'G':
-                impactFactor = 3;
-                break;
-            case 'T':
-                impactFactor = 4;
-                break;
-            default:
-                break;
+            return 1;
         }
-
-        return impactFactor;
+        else if (sequence.Contains('C'))
+        {
+            return 2;
+        }
+        else if (sequence.Contains('G'))
+        {
+            return 3;
+        }
+        else
+        {
+            return 4;
+        }
     }
 }
