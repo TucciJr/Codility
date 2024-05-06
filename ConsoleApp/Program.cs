@@ -12,3 +12,5 @@ var cyclicRotation = new Lesson02_CyclicRotation();
 var frogImp = new Lesson03_FrogImp();
 
 var maxCounters = new Lesson04_MaxCounters();
+
+var genomicRangeQuery = new Lesson05_GenomicRangeQuery();
