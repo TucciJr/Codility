@@ -32,7 +32,12 @@ internal class Lesson07_Brackets
             if ("([{".Contains(s))
             {
                 stack.Push(s);
-            }else
+            }
+            else if (stack.Count == 0)
+            {
+                return 0;
+            }
+            else
             {
                 var peek = stack.Peek();
 
