@@ -4,7 +4,7 @@ internal class Lesson05_CountDiv
     public Lesson05_CountDiv ()
     {
         Console.WriteLine("Lesson05_CountDiv");
-        Console.WriteLine("--------------------------");
+        Console.WriteLine("-----------------");
 
         Run(6, 11, 2);
         Run(0, 0, 11);

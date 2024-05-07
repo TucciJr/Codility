@@ -14,7 +14,8 @@ using System.Linq.Expressions;
 
 //var maxCounters = new Lesson04_MaxCounters();
 
-var genomicRangeQuery = new Lesson05_GenomicRangeQuery();
+//var genomicRangeQuery = new Lesson05_GenomicRangeQuery();
 
-var CountDiv = new Lesson05_CountDiv();
+//var CountDiv = new Lesson05_CountDiv();
 
+var Brackets = new Lesson07_Brackets();
