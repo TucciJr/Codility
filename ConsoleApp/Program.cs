@@ -18,4 +18,6 @@ using System.Linq.Expressions;
 
 //var CountDiv = new Lesson05_CountDiv();
 
-var Brackets = new Lesson07_Brackets();
+//var Brackets = new Lesson07_Brackets();
+
+var Distinct = new Lesson06_Distinct();
