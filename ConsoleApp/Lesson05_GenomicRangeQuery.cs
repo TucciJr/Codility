@@ -11,7 +11,7 @@ internal class Lesson05_GenomicRangeQuery
         Console.WriteLine("--------------------------");
 
         Run("CAGCCTA", [2, 5, 0, 2], [4, 5, 6, 2]);
-        Run("A", [0], [0]);
+        //Run("A", [0], [0]);
 
         Console.WriteLine("--- * ---");
     }
@@ -19,7 +19,9 @@ internal class Lesson05_GenomicRangeQuery
     private void Run(string S, int[] P, int[] Q)
     {
         var impactFactors = solution(S, P, Q);
+        Console.WriteLine($"Min Impact Factors: [{string.Join(",", impactFactors)}] Sequence: {S} for P: [{string.Join(",", P)}], Q: [{string.Join(",", Q)}]");
 
+        impactFactors = solution3(S, P, Q);
         Console.WriteLine($"Min Impact Factors: [{string.Join(",", impactFactors)}] Sequence: {S} for P: [{string.Join(",", P)}], Q: [{string.Join(",", Q)}]");
     }
 
@@ -89,10 +91,10 @@ internal class Lesson05_GenomicRangeQuery
         return result;
     }
     /*
-    0 - counters0: [0,1,1,1,1,1,2]
-    1 - counters1: [1,1,1,2,3,3,3]
-    2 - counters2: [0,0,1,1,1,1,1]
-    3 - counters3: [0,0,0,0,0,1,1]
+    A: [0,1,1,1,1,1,2]
+    C: [1,1,1,2,3,3,3]
+    G: [0,0,1,1,1,1,1]
+    T: [0,0,0,0,0,1,1]
     */
 
     public int[] solution3(string S, int[] P, int[] Q)
@@ -110,7 +112,7 @@ internal class Lesson05_GenomicRangeQuery
         {
             prefixSums[i] = new int[S.Length + 1];
 
-            Console.WriteLine($"{i} - prefixSums: [{string.Join(",", prefixSums[i])}]");
+            //Console.WriteLine($"{i} - prefixSums: [{string.Join(",", prefixSums[i])}]");
         }
 
         for (int i = 0; i < S.Length; i++)
@@ -119,8 +121,13 @@ internal class Lesson05_GenomicRangeQuery
             for (int j = 0; j < 4; j++)
             {
                 prefixSums[j][i + 1] = prefixSums[j][i] + (j == impactIndex ? 1 : 0);
-                Console.WriteLine($"{i} - {j} - impactIndex-1: {impactIndex} - S[{i}]: {S[i]} - prefixSums[j][i]: {prefixSums[j][i]} - prefixSums[{j}][{i + 1}]: [{string.Join(",", prefixSums[j][i + 1])}]");
+                //Console.WriteLine($"{i} - {j} - impactIndex-1: {impactIndex} - S[{i}]: {S[i]} - prefixSums[j][i]: {prefixSums[j][i]} - prefixSums[{j}][{i + 1}]: [{string.Join(",", prefixSums[j][i + 1])}]");
             }
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            Console.WriteLine($"{i} - prefixSums{i}: [{string.Join(",", prefixSums[i])}]");
         }
 
         for (int i = 0; i < P.Length; i++)
@@ -130,7 +137,11 @@ internal class Lesson05_GenomicRangeQuery
 
             for (int j = 0; j < 4; j++)
             {
-                if (prefixSums[j][end] - prefixSums[j][start] > 0)
+                var valueEnd = prefixSums[j][end];
+                var valueStart = prefixSums[j][start];
+                var diff = valueEnd - valueStart;
+
+                if (diff > 0)
                 {
                     result[i] = j + 1;
                     break;
