@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ConsoleApp;
+using System.Linq.Expressions;
 
 //Console.WriteLine("Hello, World!");
 
@@ -14,3 +15,6 @@ using ConsoleApp;
 //var maxCounters = new Lesson04_MaxCounters();
 
 var genomicRangeQuery = new Lesson05_GenomicRangeQuery();
+
+var CountDiv = new Lesson05_CountDiv();
+
