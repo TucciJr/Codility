@@ -6,8 +6,8 @@ internal class Lesson05_CountDiv
         Console.WriteLine("Lesson05_CountDiv");
         Console.WriteLine("--------------------------");
 
-        Run(0, 0, 11);
         Run(6, 11, 2);
+        Run(0, 0, 11);
         Run(11, 345, 17);
 
         Console.WriteLine("--- * ---");
@@ -21,22 +21,24 @@ internal class Lesson05_CountDiv
 
     public int solution(int A, int B, int K)
     {
-        var countOk = 0;
+        int offset = A % K == 0 ? 1 : 0;
 
-        for (int i = A; i <= B; i++)
-        {
-            if (i % K == 0)
-            {
-                countOk++;
-            }
-        }
-
-        return countOk;
+        return offset + (B/K) - (A/K);
     }
 }
 
 //
 /*
-A - B - K
+A - B  - K
 6 - 11 - 2
+
+ A%K  =  1
+(B/K) =  5 +
+(A/K) =  3 -
+
+11,345,17
+ A%K  =  0
+(B/K) = 20 +
+(A/K) =  0 -
+
 */
