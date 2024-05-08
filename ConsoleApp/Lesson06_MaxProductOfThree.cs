@@ -20,7 +20,7 @@ internal class Lesson06_MaxProductOfThree
 
     public int solution(int[] A)
     {
-        var max = 0;
+        var max = -1000;
 
         for (int i = 0; i < A.Length - 2; i++)
         {
