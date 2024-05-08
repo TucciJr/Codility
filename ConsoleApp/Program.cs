@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ConsoleApp;
+using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 
 //Console.WriteLine("Hello, World!");
@@ -20,4 +21,6 @@ using System.Linq.Expressions;
 
 //var Brackets = new Lesson07_Brackets();
 
-var Distinct = new Lesson06_Distinct();
+//var Distinct = new Lesson06_Distinct();
+
+var MaxProductOfThree = new Lesson06_MaxProductOfThree();
